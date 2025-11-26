@@ -1,0 +1,452 @@
+/* Importação das fontes */
+/* 'Cormorant Garamond' para corpo de texto */
+/* 'Playfair Display' para títulos */
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #019386; /* Cor que simula uma mesa de madeira clara */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box; /* Inclui padding no cálculo da largura/altura */
+}
+
+/* 1. Container Principal do Livro */
+.livro-container {
+    position: relative;
+    width: 90%;
+    max-width: 850px; /* Largura máxima do livro */
+    height: 85vh; /* Aumentado para melhor visualização das páginas */
+    background-color: #ffffff;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3), /* Sombra principal do livro */
+        -15px 0 20px rgba(0, 0, 0, 0.1) inset, /* Sombra para simular a lombada esquerda */
+        15px 0 20px rgba(0, 0, 0, 0.1) inset; /* Sombra para simular a lombada direita */
+    border-radius: 8px; /* Bordas levemente arredondadas */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 2. Container das Páginas Internas */
+.livro-paginas {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 70px); /* Ocupa 100% do pai, menos 70px para os botões */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* 3. Estilo de cada Página Individual */
+.pagina-livro {
+    position: absolute; /* Posiciona as páginas uma sobre a outra */
+    width: 100%;
+    max-width: 800px;
+    height: 100%; 
+    background-color: #ffffff8e; /* Cor do papel da página */
+    border: 2px solid #019386; /* Borda sutil da página */
+    border-radius: 3px; /* Cantos arredondados */
+    /* NOVO AJUSTE: Aumenta o padding superior para descer o conteúdo */
+    padding: 40px 35px 25px; 
+    box-sizing: border-box;
+    text-align: left; /* Alinha o texto à esquerda por padrão */
+    opacity: 0; /* Começa escondido */
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+    transform: perspective(1000px) rotateY(10deg); /* Efeito 3D sutil de "virar" */
+    transform-origin: left center; /* O eixo de rotação é a lombada esquerda */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    
+    /* Remove a rolagem padrão da página, exceto onde for explicitamente permitido */
+    overflow-y: hidden; 
+}
+
+.pagina-livro.active {
+    opacity: 1; /* Torna visível */
+    visibility: visible;
+    transform: perspective(1000px) rotateY(0deg); /* Gira para a posição normal */
+    z-index: 10; /* Garante que a página ativa esteja acima das outras */
+}
+
+.pagina-livro.capa:not(.active) {
+    opacity: 0 !important; 
+    z-index: -1; 
+    visibility: hidden;
+    transform: none; 
+}
+
+/* 4. Estilo Específico da Capa */
+.pagina-livro.capa {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    
+    /* ESTILOS DE COURO */
+    background-color: #019386; 
+    background-image: 
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), 
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 70%), 
+        radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 0.1) 0%, transparent 70%); 
+    background-blend-mode: overlay;
+
+    border: 2px solid #019386; 
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.3),
+        inset 0 0 10px rgba(0, 0, 0, 0.4),
+        inset 0 0 3px rgba(255, 255, 255, 0.2);
+
+    color: #ffffff;
+    border-radius: 8px;
+    transform: perspective(1000px) rotateY(0deg);
+    opacity: 1;
+    visibility: visible;
+}
+.capa h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    line-height: 1.1;
+    color: #ffffff; 
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+.capa h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    font-style: italic;
+    margin-top: 0;
+    color: #ffffff;
+}
+.capa .autor {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2em;
+    margin-top: 20px;
+    font-style: normal;
+    color: #c0b8ac;
+}
+/* Imagem da capa - Redonda e menor */
+.imagem-capa {
+    margin-top: 30px;
+    width: 40%;
+    max-width: 200px;
+    border: 2px solid #e0d8c7;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 50%; /* Redondo */
+    overflow: hidden; 
+}
+.imagem-capa img {
+    width: 100%;
+    height: auto;
+    display: flex;
+    text-align: center;
+}
+
+
+/* 5. Estilo do Índice */
+.pagina-livro.indice h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    color: #019386;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px dashed #d4c7b2;
+    padding-bottom: 15px;
+}
+.pagina-livro.indice ul, .pagina-livro.indice ol { 
+    list-style-type: decimal; 
+    padding: 0;
+    margin: 0 auto; 
+    width: fit-content; 
+    text-align: left; 
+    color: #0037ff;
+}
+.pagina-livro.indice li {
+    margin-bottom: 15px;
+    color: #0059ff; 
+}
+.pagina-livro.indice a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5em;
+    color: #019386; 
+    text-decoration: none;
+    transition: color 0.3s;
+    margin-left: 10px; 
+}
+.pagina-livro.indice a:hover {
+    color: #019386;
+    text-decoration: underline;
+}
+.pagina-livro.indice .nota-indice {
+    text-align: center;
+    font-size: 0.9em;
+    color: #019386;
+    margin-top: 40px;
+}
+
+
+/* 6. Estilo das Páginas de Receita */
+
+/* Estilo para a imagem das receitas - Redonda e menor */
+.receita-titulo img {
+    display: block; 
+    margin: 15px auto;
+    max-width: 50%; /* Reduzida */
+    max-height: 35vh; /* Reduzida */
+    height: auto;
+    border-radius: 30%; /* Redonda */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o título Fixo no topo das páginas de ingredientes e preparo */
+.pagina-livro .titulo-receita {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em; 
+    color: #00c5b5;
+    text-align: center;
+    margin: 0;
+    position: absolute; 
+    top: 15px;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid #019386; 
+    padding-bottom: 5px;
+    box-sizing: border-box;
+}
+
+/* Ajusta o padding para o título fixo não sobrepor o conteúdo */
+.pagina-livro.receita-ingredientes, 
+.pagina-livro.receita-preparo {
+    /* Novo padding-top para o título fixo. */
+    padding-top: 65px;  
+}
+
+
+.receita-titulo h3 {
+    /* Ajusta o título da primeira página (sem ser fixo) */
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    color: #019386;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.receita-titulo .intro-receita {
+    font-style: italic;
+    font-size: 1.2em;
+    color: #000000;
+    margin-top: 20px;
+    padding: 0 10%;
+    text-align: center;
+}
+
+.receita-ingredientes h4, .receita-preparo h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4em;
+    color: #070707;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+}
+.receita-ingredientes ul, .receita-preparo ol {
+    margin-left: 25px;
+    line-height: 1.8;
+    color: #333;
+    font-size: 1.1em;
+}
+.receita-ingredientes ul li::marker {
+    color: #0314ff; 
+}
+.receita-preparo ol li::marker {
+    color: #0314ff; 
+}
+
+/* Número da página (Fixo no topo) */
+.numero-pagina {
+    display: block;
+    text-align: right;
+    font-size: 0.8em;
+    color: #aaa;
+    margin-bottom: 10px;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+}
+
+
+/* 7. Controles de Navegação (Botões e Indicador) */
+.controles-livro {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+}
+
+.btn-nav {
+    background-color: #00c5b5;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.1s;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: bold;
+}
+
+.btn-nav:hover {
+    background-color: #019386;
+    transform: translateY(-2px);
+}
+
+.btn-nav:active {
+    transform: translateY(0);
+}
+
+.btn-nav:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#pageIndicator {
+    font-size: 1em;
+    color: #019386;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .livro-container {
+        padding: 15px;
+        min-height: 500px;
+    }
+    .pagina-livro {
+        padding: 20px 25px;
+        min-height: 450px;
+    }
+    .capa h1 {
+        font-size: 2.5em;
+    }
+    .capa h2 {
+        font-size: 1.4em;
+    }
+    .pagina-livro.indice a {
+        font-size: 1.2em;
+    }
+    .receita-titulo h3 {
+        font-size: 1.8em;
+    }
+    .controles-livro {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .livro-container {
+        padding: 10px;
+        width: 100%; 
+    }
+    .pagina-livro {
+        padding: 15px;
+        min-height: 400px;
+    }
+    .capa h1 {
+        font-size: 2em;
+    }
+    .capa h2 {
+        font-size: 1.2em;
+    }
+}
+
+.pagina-livro.final {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagina-livro.final .titulo-final{
+ font-family: 'Playfair Display', serif;
+ font-size: 2.5em;
+ color: #019386;
+ margin-bottom: 30px;
+ border-bottom: 2px solid #019386;
+ padding-bottom: 10px;
+}
+
+.pagina-livro.final p {
+ font-size: 1.3em;
+ color: #333;
+ margin-bottom: 40px;
+}
+
+.pagina-livro.final .mensagem-final {
+ font-size: 0.9em;
+ color: #aaa;
+ margin-top: 50px;
+}
+
+.btn-voltar {
+background-color: #019386; /* Cor principal */
+ color: white;
+ padding: 15px 30px;
+ border: none;
+border-radius: 8px;
+ cursor: pointer;
+ font-size: 1.2em;
+ transition: background-color 0.3s, box-shadow 0.3s;
+ font-family: 'Playfair Display', serif;
+ font-weight: 700;
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-voltar:hover {
+ background-color: #005a52; /* Tom mais escuro */
+ box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo do Botão Secreto */
+#btnSegredo {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 2em;
+    color: #019386;
+    opacity: 0.1; /* Quase invisível */
+    cursor: default;
+    transition: all 0.5s ease;
+    user-select: none; /* Impede seleção de texto */
+}
+
+#btnSegredo:hover {
+    opacity: 1; /* Fica visível ao passar o mouse */
+    cursor: pointer;
+    transform: scale(1.2) rotate(15deg);
+    color: #d4af37; /* Cor dourada */
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.paodequeijo{
+    display: block; 
+    margin: 15px auto;
+     /* Reduzida */
+    max-height: 35vh; /* Reduzida */
+    height: auto;
+    border-radius: 30%; /* Redonda */
+}

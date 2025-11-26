@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="imagens/livro 16x16.png">
+    <title>Meu Livro de Receitas</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="script/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="livro-container">
+
+        <div class="livro-paginas">
+
+            <div class="pagina-livro capa active" data-page="1">
+                <h1>Sabores de uma Vida</h1>
+                <h2>O Livro de Receitas da Família Barbosa</h2>
+                <p class="autor">Organizado por Ygor Eduardo</p>
+                <div class="imagem-capa">
+                    <img src="imagens/capa do livro.png" alt="Capa de Livro de Receitas Antigo" height="200px"
+                        width="200px">
+                </div>
+            </div>
+
+            <div class="pagina-livro indice" data-page="2">
+                <h3>Sumário</h3>
+                <ul>
+                    <li><a href="#" data-target-page="3">1. Lasanha à Bolonhesa Clássica</a></li>
+                    <li><a href="#" data-target-page="6">2. Bolo de Cenoura com Cobertura</a></li>
+                    <li><a href="#" data-target-page="9">3. Feijoada Completa da Vovó</a></li>
+                </ul>
+                <p class="nota-indice">Clique nos títulos para ir direto à receita.</p>
+
+                <div id="btnSegredo" title="Segredo de Família...">★</div>
+            </div>
+
+            <div class="pagina-livro receita-titulo" data-page="3">
+                <span class="numero-pagina">Página 1 de 3</span>
+                <h3 class="titulo-receita">1. Lasanha à Bolonhesa Clássica</h3>
+                <img src="imagens/Lasanha.png" alt="Lasanha à Bolonhesa">
+                <p class="intro-receita">Um prato clássico italiano, perfeito para reunir a família. Nossa receita
+                    tradicional utiliza molho de carne moída bem apurado.</p>
+            </div>
+
+            <div class="pagina-livro receita-ingredientes" data-page="4">
+                <h3 class="titulo-receita">1. Lasanha à Bolonhesa Clássica</h3>
+                <h4>Ingredientes:</h4>
+                <ul>
+                    <li>500g de massa fresca para lasanha</li>
+                    <li>1kg de carne moída</li>
+                    <li>2 latas de tomate pelado ou 500g de molho de tomate</li>
+                    <li>1 cebola grande picada, 2 dentes de alho amassados</li>
+                    <li>1/2 xícara de vinho tinto seco (opcional)</li>
+                    <li>1 copo de requeijão cremoso</li>
+                    <li>200g de queijo muçarela fatiado</li>
+                    <li>100g de queijo parmesão ralado</li>
+                    <li>Azeite, sal, pimenta do reino, orégano e manjericão a gosto</li>
+                </ul>
+            </div>
+
+            <div class="pagina-livro receita-preparo" data-page="5">
+                <h3 class="titulo-receita">1. Lasanha à Bolonhesa Clássica</h3>
+                <h4>Modo de Preparo:</h4>
+                <ol>
+                    <li>Em uma panela grande, refogue a cebola e o alho no azeite.</li>
+                    <li>Adicione a carne moída e refogue até dourar. Tempere com sal e pimenta.</li>
+                    <li>Acrescente o vinho (se usar) e deixe evaporar. Adicione o tomate pelado amassado ou o molho.
+                    </li>
+                    <li>Cozinhe em fogo baixo por pelo menos 30 minutos, adicionando um pouco de água se necessário.
+                        Acerte o sal e a pimenta, e adicione orégano e manjericão.</li>
+                    <li>Em um refratário, intercale camadas de molho, massa, requeijão e muçarela.</li>
+                    <li>Finalize com uma camada de molho e polvilhe generosamente com parmesão ralado.</li>
+                    <li>Leve ao forno pré-aquecido a 180°C por cerca de 25-30 minutos, ou até borbulhar e o queijo
+                        dourar.</li>
+                    <li>Deixe descansar por 10 minutos antes de servir.</li>
+                </ol>
+            </div>
+
+            <div class="pagina-livro receita-titulo" data-page="6">
+                <span class="numero-pagina">Página 1 de 3</span>
+                <h3 class="titulo-receita">2. Bolo de Cenoura com Cobertura</h3>
+                <img src="imagens/bolo de cenoura.png" alt="Bolo de Cenoura com Cobertura">
+                <p class="intro-receita">Um bolo úmido e fofo, com a doçura da cenoura e o toque irresistível da
+                    cobertura de brigadeiro mole. O favorito da criançada!</p>
+            </div>
+
+            <div class="pagina-livro receita-ingredientes" data-page="7">
+                <h3 class="titulo-receita">2. Bolo de Cenoura com Cobertura</h3>
+                <h4>Ingredientes:</h4>
+                <ul>
+                    <li>3 cenouras médias picadas</li>
+                    <li>4 ovos grandes</li>
+                    <li>1 xícara de óleo vegetal</li>
+                    <li>2 xícaras de açúcar</li>
+                    <li>2 xícaras de farinha de trigo</li>
+                    <li>1 colher de sopa de fermento em pó</li>
+                    <li>**Cobertura:** 1 lata de leite condensado, 1/2 xícara de chocolate em pó, 1 colher de sopa de
+                        manteiga.</li>
+                </ul>
+            </div>
+
+            <div class="pagina-livro receita-preparo" data-page="8">
+                <h3 class="titulo-receita">2. Bolo de Cenoura com Cobertura</h3>
+                <h4>Modo de Preparo:</h4>
+                <ol>
+                    <li>No liquidificador, bata as cenouras, ovos e óleo até obter uma mistura homogênea.</li>
+                    <li>Em uma tigela separada, misture o açúcar, a farinha e o fermento.</li>
+                    <li>Despeje a mistura do liquidificador sobre os ingredientes secos e misture delicadamente até
+                        incorporar.</li>
+                    <li>Despeje a massa em uma forma untada e enfarinhada (24cm de diâmetro).</li>
+                    <li>Asse em forno pré-aquecido a 180°C por cerca de 35-40 minutos, ou até dourar e passar no teste
+                        do palito.</li>
+                    <li>**Para a cobertura:** Misture todos os ingredientes em uma panela e leve ao fogo baixo, mexendo
+                        sempre, até desgrudar do fundo. Despeje sobre o bolo ainda quente.</li>
+                </ol>
+            </div>
+
+            <div class="pagina-livro receita-titulo" data-page="9">
+                <span class="numero-pagina">Página 1 de 3</span>
+                <h3 class="titulo-receita">3. Feijoada Completa da Vovó</h3>
+                <img src="imagens/feijoada.png" alt="Feijoada Completa">
+                <p class="intro-receita">A receita mais importante do livro! Uma feijoada completa, rica em carnes e com
+                    aquele caldo grosso, cozida lentamente para realçar todos os sabores.</p>
+            </div>
+
+            <div class="pagina-livro receita-ingredientes" data-page="10">
+                <h3 class="titulo-receita">3. Feijoada Completa da Vovó</h3>
+                <h4>Ingredientes:</h4>
+                <ul>
+                    <li>500g de feijão preto</li>
+                    <li>200g de carne seca dessalgada</li>
+                    <li>150g de costelinha de porco salgada</li>
+                    <li>100g de linguiça calabresa, 100g de paio</li>
+                    <li>Bacon, cebola, alho, louro, pimenta dedo-de-moça (opcional)</li>
+                    <li>Acompanhamentos: arroz branco, farofa, couve refogada, laranja.</li>
+                </ul>
+            </div>
+
+            <div class="pagina-livro receita-preparo" data-page="11">
+                <h3 class="titulo-receita">3. Feijoada Completa da Vovó</h3>
+                <h4>Modo de Preparo:</h4>
+                <ol>
+                    <li>Deixe as carnes salgadas de molho na véspera, trocando a água várias vezes para dessalgar.
+                        Cozinhe-as na panela de pressão separadamente até ficarem macias e pique.</li>
+                    <li>Cozinhe o feijão preto na panela de pressão até ficar macio (cerca de 30-40 minutos após pegar
+                        pressão).</li>
+                    <li>Em uma panela grande, frite o bacon até ficar crocante. Retire o bacon e reserve a gordura.</li>
+                    <li>Na mesma panela, refogue a cebola e o alho na gordura do bacon.</li>
+                    <li>Adicione as carnes cozidas e picadas, as linguiças e refogue.</li>
+                    <li>Junte o feijão cozido (com o caldo) às carnes. Adicione as folhas de louro e, se desejar,
+                        pimenta.</li>
+                    <li>Cozinhe em fogo baixo por cerca de 20-30 minutos, mexendo ocasionalmente para engrossar o caldo.
+                    </li>
+                    <li>Sirva com arroz branco, farofa, couve refogada e fatias de laranja.</li>
+                </ol>
+            </div>
+
+            <div class="pagina-livro receita-titulo" data-page="12">
+                <span class="numero-pagina">Secreto</span>
+                <h3 class="titulo-receita">4. Pão de Queijo da Bisavó</h3>
+                <img class="paodequeijo" src="imagens/Paodequijo.png" alt="Pão de Queijo Mineiro"
+                    onerror="this.style.display='none'">
+                <p class="intro-receita">Você encontrou o segredo! A receita original mineira, crocante por fora e
+                    elástica por dentro. Um tesouro guardado a sete chaves.</p>
+            </div>
+
+            <div class="pagina-livro receita-ingredientes" data-page="13">
+                <h3 class="titulo-receita">4. Pão de Queijo da Bisavó</h3>
+                <h4>Ingredientes Secretos:</h4>
+                <ul>
+                    <li>500g de polvilho azedo</li>
+                    <li>1 copo (americano) de água</li>
+                    <li>1 copo (americano) de leite</li>
+                    <li>1/2 xícara de óleo</li>
+                    <li>2 ovos grandes</li>
+                    <li>100g de queijo parmesão ralado</li>
+                    <li>300g de queijo meia cura ralado grosso</li>
+                    <li>1 colher (sopa) rasa de sal</li>
+                </ul>
+            </div>
+
+            <div class="pagina-livro receita-preparo" data-page="14">
+                <h3 class="titulo-receita">4. Pão de Queijo da Bisavó</h3>
+                <h4>O Ritual de Preparo:</h4>
+                <ol>
+                    <li>Em uma panela, ferva a água, o leite, o óleo e o sal.</li>
+                    <li>Escalde o polvilho: despeje o líquido fervente sobre o polvilho em uma tigela e misture bem.
+                        Deixe esfriar.</li>
+                    <li>Quando a massa estiver morna, adicione os ovos um a um, amassando bem com as mãos.</li>
+                    <li>Adicione os queijos e continue sovando até a massa soltar das mãos (ela fica pegajosa, mas
+                        firme).</li>
+                    <li>Unte as mãos com óleo, faça bolinhas e coloque em assadeira (não precisa untar a forma).</li>
+                    <li>Leve ao forno pré-aquecido a 200°C por cerca de 25 a 30 minutos ou até dourar.</li>
+                </ol>
+            </div>
+
+            <div class="pagina-livro final" data-page="15">
+                <h3 class="titulo-final">Fim das Receitas</h3>
+                <p>Esperamos que este livro de receitas traga muitos momentos felizes à sua cozinha!</p>
+                <button id="btnVoltarIndice" class="btn-voltar">Voltar ao Sumário</button>
+                <p class="mensagem-final">Selecione "Anterior" para voltar à última receita.</p>
+            </div>
+
+        </div>
+
+        <div class="controles-livro">
+            <button id="prevBtn" class="btn-nav">❮ Anterior</button>
+            <span id="pageIndicator">Página 1 / 15</span>
+            <button id="nextBtn" class="btn-nav">Próxima ❯</button>
+        </div>
+
+    </div>
+</body>
+
+</html>
